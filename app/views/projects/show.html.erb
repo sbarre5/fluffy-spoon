@@ -5,38 +5,39 @@
   <% end %>
 <div class="row">
   <h1><%= @project.name %></h1>
+    <div class="well">
+      <h1>Add a Bug</h1>
 
-<h1>Add a Bug</h1>
+      <%= form_for :projects, :url => { :action => "create_story" } do |f| %>
+        <div class="form-group">
+          <%= f.label :short_description %>: <%= f.text_field :short_description, class: 'form-control', :required => true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :long_description %>: <%= f.text_area :long_description, :rows => 5, class: 'form-control', :required => true  %><br />
+        </div>
+        <div class="form-group">
+          <%= f.label :reported_by %>: <%= select_tag(:reported_by, options_for_select(
+            [
+              ["Shanna"], ["Christine"], ["Jay"], ["Deniece"], ["Other"]
+            ])) %>
+        </div>
+        <div class="form-group">
+          <%= f.label :labels %>: <%= f.text_field :labels, class: 'form-control', :required => true %>
+           <p class="help-block">Ex: drag-and-drop, design, etc.</p>
+        </div>
+        <div class="form-group">
+          <%= f.label :image %>:
+          <%= f.file_field :image %>
+        </div>
 
-<%= form_for :projects, :url => { :action => "create_story" } do |f| %>
-  <div class="form-group">
-    <%= f.label :short_description %>: <%= f.text_field :short_description, class: 'form-control', :required => true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :long_description %>: <%= f.text_area :long_description, :rows => 5, class: 'form-control', :required => true  %><br />
-  </div>
-  <div class="form-group">
-    <%= f.label :reported_by %>: <%= select_tag(:reported_by, options_for_select(
-      [
-        ["Shanna"], ["Christine"], ["Jay"], ["Deniece"], ["Other"]
-      ])) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :labels %>: <%= f.text_field :labels, class: 'form-control', :required => true %>
-     <p class="help-block">Ex: drag-and-drop, design, etc.</p>
-  </div>
-  <div class="form-group">
-    <%= f.label :image %>:
-    <%= f.file_field :image %>
-  </div>
+        <div class="form-group">
+          <%= f.label :url %>: <%= f.text_field :url, class: 'form-control' %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :url %>: <%= f.text_field :url, class: 'form-control' %>
-  </div>
-
-<%= f.submit "Add Bug" %>
-</p>
-  <% end %>
+      <%= f.submit "Add Bug" %>
+      </p>
+        <% end %>
+    </div>
 </div>
 
 <!-- SHOW BUGS AND FEATURES
