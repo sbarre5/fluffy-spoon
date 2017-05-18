@@ -63,9 +63,9 @@ class ProjectsController < ApplicationController
     labels << params[:reported_by]
     description = params[:projects][:long_description]
       if params[:projects][:picture]
-        description << "\n \n Image:" + File.expand_path(name)
+        description << "\n \n Image: " + "https://rocky-bayou-16154.herokuapp.com/images/uploads/" + name
       end if
-    description << "\n \n URL:" + params[:projects][:url]
+    description << "\n \n URL: " + params[:projects][:url]
     @project.create_story(name: params[:projects][:short_description], story_type: 'bug', description: description, labels: labels)
     flash[:success] = "Your bug has been submitted."
     redirect_to project_path
