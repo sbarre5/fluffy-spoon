@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get 'projects/index'
 
   resources :projects
+  
 
 end
