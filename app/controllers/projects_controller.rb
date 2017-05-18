@@ -51,18 +51,18 @@ class ProjectsController < ApplicationController
   end
 
   def create_story
-    if params[:projects][:picture]
-      name = params[:projects][:picture].original_filename
+    if params[:projects][:image]
+      name = params[:projects][:image].original_filename
       directory = "public/images/uploads"
       path = File.join(directory, name)
-      File.open(path, "wb") { |f| f.write(params[:projects][:picture].read) }
+      File.open(path, "wb") { |f| f.write(params[:projects][:image].read) }
     end if
     client = TrackerApi::Client.new(token:  Rails.application.secrets.pivotal_tracker_api_key)
     @project  = client.project(params[:id])
     labels = params[:projects][:labels].split(',')
     labels << params[:reported_by]
     description = params[:projects][:long_description]
-      if params[:projects][:picture]
+      if params[:projects][:image]
         description << "\n \n Image: " + "https://rocky-bayou-16154.herokuapp.com/images/uploads/" + name
       end if
     description << "\n \n URL: " + params[:projects][:url]
