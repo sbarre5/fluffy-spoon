@@ -51,10 +51,23 @@ class ProjectsController < ApplicationController
   end
 
   def create_story
+    if params[:projects][:picture]
+      name = params[:projects][:picture].original_filename
+      directory = "public/images/uploads"
+      path = File.join(directory, name)
+      File.open(path, "wb") { |f| f.write(params[:projects][:picture].read) }
+    end if
     client = TrackerApi::Client.new(token:  Rails.application.secrets.pivotal_tracker_api_key)
     @project  = client.project(params[:id])
-    labels = [params[:reported_by]]
-    @project.create_story(name: params[:projects][:short_description], story_type: 'bug', description: params[:projects][:long_description], labels: labels)
+    labels = params[:projects][:labels].split(',')
+    labels << params[:reported_by]
+    description = params[:projects][:long_description]
+      if params[:projects][:picture]
+        description << "\n \n Image:" + File.expand_path(name)
+      end if
+    description << "\n \n URL:" + params[:projects][:url]
+    @project.create_story(name: params[:projects][:short_description], story_type: 'bug', description: description, labels: labels)
+    flash[:success] = "Your bug has been submitted."
     redirect_to project_path
   end
 

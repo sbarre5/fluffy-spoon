@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 #custom gems
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'tracker_api'
 gem 'chartjs-ror'
 gem 'font-awesome-rails'
