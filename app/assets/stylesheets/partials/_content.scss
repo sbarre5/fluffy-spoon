@@ -1,0 +1,50 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background: $lightGray;
+}
+.tile {
+  border: solid 1px darken($lightGray, 10%);
+  background-color: #FFF;
+  margin-bottom: 2em;
+  padding: 1em 1em 3em 1em;;
+  border-radius: 2px;
+  height: 100%;
+  position: relative;
+  @extend .box-shadow;
+  .name {
+    text-transform: uppercase;
+    font-size: 1em;
+    color: $darkGray;
+    border-bottom: solid 1px $darkGray;
+  }
+  .description {
+    font-size: .8em;
+    line-height: 1.5em;
+    margin-top: 1em;
+  }
+  .id {
+    font-size: .9em;
+    color: #CCC;
+  }
+  .btn {
+    width: 85%;
+    position: absolute;
+    bottom: 1em;
+  }
+}
+.title {
+  line-height: 80px;
+  background: #FFF;
+  color: #CCC;
+  margin-bottom: 2em;
+  @extend .box-shadow;
+  h1 {
+    line-height: 80px;
+    margin: 0;
+    padding-left: 1em;
+    font-size: 2em;
+    color: $darkGray;
+    font-weight: 200;
+  }
+}

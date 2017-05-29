@@ -1,9 +1,45 @@
-<h1>All Projects</h1>
-  <h2>Active Projects</h2>
+<div class="row title">
+  <h1 class="col-md-6">All Projects</h1>
+    <div class="col-md-6" id="custom-search-input">
+      <div class="input-group col-md-12">
+        <input type="text" class="search-query form-control" placeholder="Find a Project..." id="search" />
+        <span class="input-group-btn">
+        <button class="btn btn-danger" type="button">
+        <span class=" glyphicon glyphicon-search"></span>
+        </button>
+        </span>
+      </div>
+    </div>
+</div>
+
+
+<div class="row projects">
   <% @pivotal_tracker_projects.each do |project|  %>
-    <div>
-      <%= project.name %>
-      <%= project.id %>
-      <%= link_to 'Show', project_path(project) %>
+    <div class="col-md-3 col-sm-4 col-xs-6" projectData="<%= project.name %> ">
+      <div class="tile">
+        <div class="name">
+          <%= project.name %>
+        </div>
+        <!-- <%= project.id %> -->
+        <p class="description">
+          <%= project.description %>
+        </p>
+        <%= link_to "View Project", project_path(project.id), :class => "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
+</div>
+
+<script type="text/javascript">
+  $("#search").on("keyup", function() {
+     var key = this.value.toLowerCase();
+      $(".tile").each(function() {
+        if ($(this).text().toLowerCase().indexOf(key) >= 0) {
+            $(this).parent().show();
+        }
+        else {
+          $(this).parent().hide();
+        }
+      });
+  });
+</script>

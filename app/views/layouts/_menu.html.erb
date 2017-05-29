@@ -1,0 +1,42 @@
+<div class="nav-side-menu">
+<div class="brand">
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="175.41" height="68.12" viewBox="0 0 175.41 68.12"><title>Untitled-2</title><path d="M259.1,395.38c-1.61-3.2-3.84-2.49-5.71-2.5-9-.06-18,0-27,0-2.86,0-5.58-.23-8-3.87h5.75c23.32,0,46.64-.07,70,.05a43.86,43.86,0,0,0,15.15-2.22c11.8-4.17,24.1-4.73,36.47-4.26,3.36.13,6.33-.4,8.33-3.37,1.17-1.75,2.79-2.12,4.75-2.06a16.65,16.65,0,0,0,5.42-.43c.94-.3,2.84-.32,2.68-2.24-.18-2.21-1.93-1.29-3.06-1.44-4.26-.55-9.07,1.54-12.84-2.7,3.3-2.14,7.79.94,10.87-2.66-6.05-1.76-12.63,1.67-17.67-3.45,10.06-.05,20.73-3.51,29.29,5.07,2.75,2.75,6.09,3.15,9.53,3.65s6.78,1,10.77,4.23c-5,0-8.71.15-12.4,0a14.56,14.56,0,0,0-13.58,6.8c-3.56,5.22-7.38,10.3-10.5,15.77-6.13,10.73-15.62,15.41-27.46,16.33-2.79.22-5.57.55-8.57.85,1.14,2.6,3.17,1.9,4.8,2.11,10.22,1.34,20.46,2.56,30.67,4,3.43.48,6.76,1.49,9.05,4.87-6.78-2.65-13.3-3.52-20.37,3.76,2.3-6.88-1.55-6.79-4.49-7.15-7.76-.94-15.55-1.65-23.34-2.38-1.83-.17-4.16.15-5.2-1.25-3.07-4.14-6.58-2.38-10.19-1.42-9.15,2.42-18.32,4.78-27.49,7.14a16.05,16.05,0,0,1-7.92.22c-3.72-.94-5.87-3.33-5.79-8.2,3.37,3.74,6.55,6.92,11.12,4.27,2.33-1.35-1.28-2.85-.6-5.21,6.65,5.5,13.41,2.08,20.17.42,5.32-1.31,10.61-2.75,16.08-4.18-.64-2.67-3.14-3.89-4.45-6.35,9.38-1.22,18.71,1,27.67-2.64h-42.9c-3,0-5.79-.35-8.35-3.65h14.1c-1.57-3-3.91-2.15-5.81-2.15-18-.06-36,0-54,0-3,0-6,0-8.23-3.64Z" transform="translate(-218.45 -363.47)" fill="#fff"/></svg>
+</div>
+<i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+<div class="menu-list">
+    <ul id="menu-content" class="menu-content collapse out">
+        <li>
+          <%= link_to root_path do %>
+            <i class="fa fa-dashboard fa-lg"></i> Dashboard
+          <% end %>
+        </li>
+        <li class="<%= 'active' if params[:controller] == 'projects' %> collapsed" data-toggle="collapse" data-target="#projects" class="collapsed">
+          <%= link_to projects_index_path do %>
+            <i class="fa fa-eye fa-lg"></i> Projects <span class="arrow"></span>
+          <% end %>
+        </li>
+        <ul class="sub-menu collapse <%= 'in' if params[:controller] == 'projects' %>" id="projects">
+          <li>
+            <%= link_to projects_index_path do %>
+              <i class="fa fa-eye fa-lg"></i> View All
+            <% end %>
+          </li>
+            <li><i class="fa fa-plus fa-lg"></i>Add New Project</li>
+        </ul>
+        <li data-toggle="collapse" data-target="#assignments" class="collapsed">
+            <a><i class="fa fa-id-card-o fa-lg"></i> Assignments <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="assignments">
+            <li><i class="fa fa-eye fa-lg"></i>View All</li>
+            <li><i class="fa fa-plus fa-lg"></i>Add New Assignment</li>
+        </ul>
+        <li data-toggle="collapse" data-target="#people" class="collapsed">
+            <a><i class="fa fa-users fa-lg"></i> People <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="people">
+            <li><i class="fa fa-eye fa-lg"></i>View All</li>
+            <li><i class="fa fa-plus fa-lg"></i>Add New Person</li>
+        </ul>
+    </ul>
+</div>
+</div>

@@ -1,0 +1,9 @@
+.btn {
+  text-transform: uppercase;
+  &.btn-primary {
+    background: $midGray;
+    color: $white;
+    border: none;
+    border-radius: 2px;
+  }
+}

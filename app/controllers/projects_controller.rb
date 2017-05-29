@@ -28,22 +28,18 @@ class ProjectsController < ApplicationController
   end
 
   def update
-
     if @project.update(project_params)
       redirect_to @project
     else
       render 'edit'
     end
-
   end
-
 
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_path
   end
-
 
   def show
     client = TrackerApi::Client.new(token:  Rails.application.secrets.pivotal_tracker_api_key)

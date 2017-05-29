@@ -1,9 +1,8 @@
 
-<div class="container">
+<div class="row">
   <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
   <% end %>
-<div class="row">
   <h1><%= @project.name %></h1>
     <div class="well">
       <h1>Add a Bug</h1>
@@ -108,4 +107,3 @@
 
   </div>
 </div> -->
-</div>
